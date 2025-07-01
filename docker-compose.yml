@@ -1,6 +1,6 @@
 services:
   supabase-grafana:
-    build: ./
+    image: grafana/grafana:latest
     environment:
       SUPABASE_ACCESS_TOKEN: ${SUPABASE_ACCESS_TOKEN}
       SUPABASE_ORGANIZATION_ID: ${SUPABASE_ORGANIZATION_ID}
@@ -9,4 +9,7 @@ services:
       PASSWORD_PROTECTED: ${PASSWORD_PROTECTED}
       GRAFANA_PASSWORD: ${GRAFANA_PASSWORD}
     volumes:
-      - ./data:/data
+      - grafana-data:/var/lib/grafana
+
+volumes:
+  grafana-data:
